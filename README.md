@@ -87,13 +87,6 @@ pprint(report["final_travel_guide"])
 ```
 ---
 
-## Workflow Visualization
-Below is the generated LangGraph agent workflow:
-
-<p align="center"> <img src="images/workflow.png" alt="TripAgents Workflow" width="100"/> </p>
-
----
-
 ## Key Highlights
 - **Multi-Agent Collaboration** — Orchestrates autonomous AI agents with distinct responsibilities.
 
