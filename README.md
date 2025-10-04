@@ -1,28 +1,30 @@
-# CulinaryMind:Multi-Agent AI Orchestration for Recipe Generation
+# TripAgents:Multi-Agent AI Orchestration for Travel Planner
 
-> A next-generation **LangGraph + LangChain** project showcasing **multi-agent orchestration**, **structured LLM reasoning**, and **adaptive workflow design** — turning meal ideas into detailed, culturally enriched recipe guides.
+> A sophisticated **multi-agent AI workflow** using LangGraph and LangChain to transform a list of travel destinations into a structured, detailed itinerary.
 
 ---
 
 ## Overview
 
-**CulinaryMind** is an intelligent **multi-agent system** that demonstrates how different AI agents can collaborate to transform a simple list of meals into a complete, chef-level culinary plan.
+**TripAgents** is an intelligent **multi-agent system** that demonstrates how autonomous AI agents can collaborate to generate comprehensive travel plans.  
 
-This project leverages **LangGraph** to coordinate multiple autonomous agents — each responsible for a specialized task — creating a seamless pipeline from meal planning to detailed preparation guidance.
+The system leverages **LangGraph** to orchestrate multiple agents:  
+
+1. **Orchestrator Agent**: Breaks down a list of destinations into structured sections with `Destination` objects.  
+2. **Travel Agent Workers**: Generate detailed day-by-day itineraries and activity recommendations for each destination.  
+3. **Synthesizer Agent**: Aggregates all itineraries into a polished, cohesive travel guide.  
+
+The project highlights **multi-agent orchestration, structured LLM reasoning, and workflow automation**.
 
 ---
 
 ## Agent Architecture
 
-The system operates through **three coordinated agents**, each represented as a LangGraph node:
-
 | Agent | Role | Description |
 |:------|:------|:------------|
-| **Orchestrator Agent** | Planner | Decomposes the user’s meal list into structured dish objects (`Dishes` schema) with names, ingredients, and cultural origins. |
-| **Chef Agent(s)** | Executors | Each chef agent specializes in a particular cuisine, generating step-by-step preparation guides based on assigned dishes. Multiple chef agents can work in **parallel** using the `Send()` API. |
-| **Synthesizer Agent** | Aggregator | Compiles all generated dish guides into a polished, human-readable final meal report. |
-
-Each agent is connected through a **state-driven workflow**, managed by `StateGraph`, ensuring data consistency and smooth message passing between nodes.
+| **Orchestrator Agent** | Planner | Decomposes user input into structured `Destination` objects with name, region, and activities. |
+| **Travel Agent Worker** | Executor | Generates detailed itineraries and travel tips for each destination. Multiple workers run concurrently using the `Send()` API. |
+| **Synthesizer Agent** | Aggregator | Combines all generated itineraries into a final travel guide. |
 
 ---
 
@@ -30,37 +32,94 @@ Each agent is connected through a **state-driven workflow**, managed by `StateGr
 
 | Layer | Technology | Purpose |
 |:------|:------------|:--------|
-| AI Core | [LangChain](https://python.langchain.com/) | Prompt design, message templates, and LLM invocation |
-| Workflow Engine | [LangGraph](https://langchain-ai.github.io/langgraph/) | Agent orchestration and state management |
-| Schema Enforcement | [Pydantic](https://docs.pydantic.dev/) | Defines and validates structured data models (`Dish`, `Dishes`) |
-| LLM Provider | [OpenAI GPT-4o-mini](https://platform.openai.com/docs/) | Cost-efficient model for structured reasoning |
-| Visualization | [PyGraphviz](https://pygraphviz.github.io/) | Generates the workflow graph diagram |
+| AI Core | [LangChain](https://python.langchain.com/) | Prompting, LLM orchestration |
+| Workflow Engine | [LangGraph](https://langchain-ai.github.io/langgraph/) | Multi-agent workflow management |
+| Schema Validation | [Pydantic](https://docs.pydantic.dev/) | Structured output validation (`Destination`, `Destinations`) |
+| LLM Provider | [OpenAI GPT-4o-mini](https://platform.openai.com/docs/) | Cost-effective LLM for structured reasoning |
+| Visualization | [PyGraphviz](https://pygraphviz.github.io/) | Workflow diagram generation |
 
 ---
 
 ## Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/<your-username>/CulinaryMind.git
-cd CulinaryMind
+Clone the repository:
 
-# Install dependencies
-pip install langchain-openai==0.3.27
-pip install langgraph==0.6.6
-pip install pygraphviz==1.14
+```bash
+git clone https://github.com/Azihadadi/TripAgents.git
+cd TripAgents
+```
+---
+
+## Install dependencies:
+```bash
+pip install -r requirements.txt
 ```
 ---
 
 ## Usage Example
 ```bash
+from pprint import pprint
+
+# Dummy input: list of travel destinations
 dummy_state = {
-    "meals": "Spaghetti Bolognese and Chicken Stir Fry",
+    "destinations": "Paris, Tokyo, and New York",
     "sections": [],
-    "completed_menu": [],
-    "final_meal_guide": ""
+    "completed_plan": [],
+    "final_travel_guide": ""
 }
 
+# Execute the workflow
 report = orchestrator_worker.invoke(dummy_state)
-print(report["final_meal_guide"])
+
+# Print the final travel guide
+print("===== Final Travel Guide =====")
+pprint(report["final_travel_guide"])
+
 ```
+---
+
+## Workflow Visualization
+Below is the generated LangGraph agent workflow:
+
+<p align="center"> <img src="workflow.png" alt="TravelMind Agent Workflow" width="600"/> </p>
+
+---
+
+## Key Highlights
+- **Multi-Agent Collaboration** — Orchestrates autonomous AI agents with distinct responsibilities.
+
+- **Parallel Execution** — Travel Agent Workers run concurrently for efficiency.
+
+- **Structured Output** — Enforces JSON schema consistency with Pydantic.
+
+- **Composable Architecture** — Easily extendable to other domains like finance, education, or research.
+
+- **Reflection Pattern** — Enables iterative refinement and adaptation
+
+---
+
+## Example Output
+```bash
+Hello! I’m Anna Smith, a travel agent specialized in France.
+
+Destination: Paris
+Activities:
+1. Visit the Eiffel Tower at sunrise.
+2. Explore the Louvre Museum.
+3. Enjoy a Seine river cruise.
+
+Tips:
+- Buy museum tickets online in advance.
+- Try local bakeries for breakfast.
+```
+
+---
+
+## Future Work
+
+- [ ] Add Critic Agent for itinerary review and refinement  
+- [ ] Integrate personalized travel preferences (budget, interests)  
+- [ ] Connect to real-time flight/hotel APIs  
+- [ ] Enable multi-day itinerary optimization  
+- [ ] Develop a user-friendly **UI** for interactive travel planning
+
