@@ -1,0 +1,5 @@
+langchain-openai==0.3.27
+langgraph==0.6.6
+pygraphviz==1.14
+pydantic
+IPython
