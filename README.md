@@ -32,7 +32,7 @@ The project highlights **multi-agent orchestration, structured LLM reasoning, an
 Below is the Orchestration Design Pattern diagram for the TripAgents workflow:
 
 <p align="center">
-  <img src="images/orchestration_design.png" alt="TripAgents Orchestration Design Pattern" width="700"/>
+  <img src="images/orchestration_design.png" alt="TripAgents Orchestration Design Pattern" width="800"/>
 </p>
 
 ---
@@ -90,7 +90,7 @@ pprint(report["final_travel_guide"])
 ## Workflow Visualization
 Below is the generated LangGraph agent workflow:
 
-<p align="center"> <img src="images/workflow.png" alt="TripAgents Workflow" width="600"/> </p>
+<p align="center"> <img src="images/workflow.png" alt="TripAgents Workflow" width="100"/> </p>
 
 ---
 
