@@ -122,13 +122,4 @@ Tips:
 - Try local bakeries for breakfast.
 ```
 
----
-
-## Future Work
-
-- [ ] Add Critic Agent for itinerary review and refinement  
-- [ ] Integrate personalized travel preferences (budget, interests)  
-- [ ] Connect to real-time flight/hotel APIs  
-- [ ] Enable multi-day itinerary optimization  
-- [ ] Develop a user-friendly **UI** for interactive travel planning
 
