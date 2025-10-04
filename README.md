@@ -49,3 +49,18 @@ cd CulinaryMind
 pip install langchain-openai==0.3.27
 pip install langgraph==0.6.6
 pip install pygraphviz==1.14
+```
+---
+
+## Usage Example
+```bash
+dummy_state = {
+    "meals": "Spaghetti Bolognese and Chicken Stir Fry",
+    "sections": [],
+    "completed_menu": [],
+    "final_meal_guide": ""
+}
+
+report = orchestrator_worker.invoke(dummy_state)
+print(report["final_meal_guide"])
+```
