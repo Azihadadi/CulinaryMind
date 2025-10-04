@@ -27,6 +27,15 @@ The project highlights **multi-agent orchestration, structured LLM reasoning, an
 | **Synthesizer Agent** | Aggregator | Combines all generated itineraries into a final travel guide. |
 
 ---
+## Orchestration Design Pattern
+
+Below is the Orchestration Design Pattern diagram for the TripAgents workflow:
+
+<p align="center">
+  <img src="orchestration_design.png" alt="TravelMind Orchestration Design Pattern" width="700"/>
+</p>
+
+---
 
 ## Tech Stack
 
